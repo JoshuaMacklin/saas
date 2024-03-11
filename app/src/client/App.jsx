@@ -7,20 +7,20 @@
 import { useState, useEffect } from 'react'
 import Notes from './components/Notes'
 import Form from './components/Form'
-import { noteServices } from './services/noteServices'
+// import { noteServices } from './services/noteServices'
 import SuccessMessage from './components/SuccessMessage'
 import ErrorMessage from './components/ErrorMessage'
 import { FaSort } from "react-icons/fa6";
 import { MdDeleteSweep } from "react-icons/md";
 import './components/css/App.css'
 
-const {
-  get,
-  create,
-  update,
-  remove,
-  removeAll
-} = noteServices
+// const {
+//   get,
+//   create,
+//   update,
+//   remove,
+//   removeAll
+// } = noteServices
 
 const App = () => {
   const [notes, setNotes] = useState([])
@@ -30,13 +30,13 @@ const App = () => {
   const [disableFunction, setDisableFunction] = useState(false)
   const [isSorted, setIsSorted] = useState(false)
 
-  //Get RQ
-  useEffect(() => {
-    get()
-    .then(notes => 
-      setNotes(notes)
-      )
-  }, [])
+  // //Get RQ
+  // useEffect(() => {
+  //   get()
+  //   .then(notes => 
+  //     setNotes(notes)
+  //     )
+  // }, [])
 
   //Sort Notes function top-bottom/ bottom-top
   const sortNotes = () => {
