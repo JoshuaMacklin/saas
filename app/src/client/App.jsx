@@ -56,8 +56,8 @@ const NoteView = ({ note }) => {
     <ul>
       <li id={String(note.id)}>
         {note.content}
-        <button onClick={handleIsImportant}>{isNoteImportant}</button>
-        <button onClick={handleDelete}>Delete Note</button>
+        <button className="impbtn" onClick={handleIsImportant}>{isNoteImportant}</button>
+        <button className="delbtn" onClick={handleDelete}>Delete Note</button>
 
       </li>
     </ul>
@@ -77,7 +77,7 @@ const NotesList = ({ notes }) => {
 
   return (
     <div>
-      <button onClick = {() => setShowAll(!showAll)}> show {showAll ? 'important' : 'all'}</button>
+      <button id="shwbtn" onClick = {() => setShowAll(!showAll)}> show {showAll ? 'important' : 'all'}</button>
       {notesToShow.map((note, idx) => (
         <NoteView note={note} key={idx} />
       ))}
@@ -100,8 +100,8 @@ const NewNoteForm = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input name="content" type="text" defaultValue="" />
-      <input type="submit" value="Create note" />
+      <input id="content" name="content" type="text" defaultValue="" />
+      <input id="submit-note" type="submit" value="Create note" />
     </form>
   )
 }
