@@ -19,6 +19,7 @@ const App = () => {
 
   return (
     <div>
+      <h1> Ascending Notes </h1>
       <NewNoteForm />
 
       {notes && <NotesList notes={notes} />}
@@ -36,7 +37,7 @@ const NoteView = ({ note }) => {
         id: note.id,
         isImportant: !note.isImportant
       })
-    } catch(error){
+    } catch (error) {
       window.alert('Error while updating note:' + error.message)
     }
   }
@@ -46,7 +47,7 @@ const NoteView = ({ note }) => {
       await deleteNote({
         id: note.id,
       })
-    } catch(error){
+    } catch (error) {
       window.alert('Error while deleting note:' + error.message)
     }
   }
@@ -56,9 +57,12 @@ const NoteView = ({ note }) => {
     <ul>
       <li id={String(note.id)}>
         {note.content}
-        <button className="impbtn" onClick={handleIsImportant}>{isNoteImportant}</button>
-        <button className="delbtn" onClick={handleDelete}>Delete Note</button>
-
+        <div>
+          <button className="impbtn" onClick={handleIsImportant}>{isNoteImportant}</button>
+        </div>
+        <div>
+          <button className="delbtn" onClick={handleDelete}>Delete Note</button>
+        </div>
       </li>
     </ul>
   )
@@ -77,7 +81,9 @@ const NotesList = ({ notes }) => {
 
   return (
     <div>
-      <button id="shwbtn" onClick = {() => setShowAll(!showAll)}> show {showAll ? 'important' : 'all'}</button>
+      <div>
+        <button id="shwbtn" onClick={() => setShowAll(!showAll)}> show {showAll ? 'important' : 'all'}</button>
+      </div>
       {notesToShow.map((note, idx) => (
         <NoteView note={note} key={idx} />
       ))}
@@ -101,7 +107,7 @@ const NewNoteForm = () => {
   return (
     <form onSubmit={handleSubmit}>
       <input id="content" name="content" type="text" defaultValue="" />
-      <input id="submit-note" type="submit" value="Create note" />
+      <input id="submit-note" type="submit" value="Create Note" />
     </form>
   )
 }
