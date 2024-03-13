@@ -349,6 +349,11 @@ action createFile {
 
 // 📚 Queries
 
+query getNotes {
+ fn: import { getNotes } from "@src/server/queries.js",
+ entities: [Note]
+}
+
 query getGptResponses {
   fn: import { getGptResponses } from "@src/server/queries.js",
   entities: [User, GptResponse]
