@@ -78,6 +78,12 @@ app OpenSaaS {
  * https://wasp-lang.dev/docs/data-model/entities
  */
 
+ entity Note {=psl
+  id                        String          @id @default(uuid())
+  content                   String
+  isImportant               Boolean         @default(false)
+psl=}
+
 entity User {=psl
   id                        Int             @id @default(autoincrement())
   email                     String?         @unique
