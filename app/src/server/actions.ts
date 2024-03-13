@@ -11,6 +11,7 @@ import {
   type CreateFile,
   type CreateNote,
   type UpdateNote,
+  type DeleteNote,
 } from 'wasp/server/operations';
 import Stripe from 'stripe';
 import type { GeneratedSchedule, StripePaymentResult } from '../shared/types';
@@ -26,6 +27,18 @@ function setupOpenAI() {
   }
   return new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 }
+
+type DeleteNotePayload = Pick<Note, 'id'>
+
+export const deleteNote: DeleteNote<DeleteNotePayload, Note> = async (
+  { id },
+  context
+) => {
+  return context.entities.Note.delete({
+    where: { id }
+  })
+}
+
 
 type UpdateNotePayload = Pick<Note, 'id' | 'isImportant'>
 

@@ -6,7 +6,7 @@
 // import './Main.css';
 import { useState, useEffect } from 'react'
 // import { Note } from 'wasp/entities'
-import { getNotes, useQuery, createNote, updateNote } from 'wasp/client/operations'
+import { getNotes, useQuery, createNote, updateNote, deleteNote } from 'wasp/client/operations'
 
 // import { noteServices } from './services/noteServices'
 import './components/css/App.css'
@@ -41,23 +41,44 @@ const NoteView = ({ note }) => {
     }
   }
 
+  const handleDelete = async (event) => {
+    try {
+      await deleteNote({
+        id: note.id,
+      })
+    } catch(error){
+      window.alert('Error while deleting note:' + error.message)
+    }
+  }
+
   const isNoteImportant = note.isImportant ? "Mark as Not Important" : "Mark as Important"
   return (
     <ul>
       <li id={String(note.id)}>
         {note.content}
         <button onClick={handleIsImportant}>{isNoteImportant}</button>
+        <button onClick={handleDelete}>Delete Note</button>
+
       </li>
     </ul>
   )
 }
 
 const NotesList = ({ notes }) => {
+  const [showAll, setShowAll] = useState(true)
+
+  const notesToShow = showAll
+    ? notes
+    : notes.filter(note => note.isImportant)
+
+  console.log(notesToShow)
+
   if (!notes?.length) return <div>No notes</div>
 
   return (
     <div>
-      {notes.map((note, idx) => (
+      <button onClick = {() => setShowAll(!showAll)}> show {showAll ? 'important' : 'all'}</button>
+      {notesToShow.map((note, idx) => (
         <NoteView note={note} key={idx} />
       ))}
     </div>

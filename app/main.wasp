@@ -306,6 +306,11 @@ page AdminUIButtonsPage {
 
 // 📝 Actions
 
+action deleteNote {
+  fn: import { deleteNote } from "@src/server/actions.js",
+  entities: [Note]
+}
+
 action createNote {
   fn: import { createNote } from "@src/server/actions.js",
   entities: [Note]
