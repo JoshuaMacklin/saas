@@ -1,4 +1,4 @@
-import { type User, type Task, type File } from 'wasp/entities';
+import { type User, type Task, type File, type Note} from 'wasp/entities';
 import { HttpError } from 'wasp/server';
 import {
   type GenerateGptResponse,
@@ -9,6 +9,8 @@ import {
   type DeleteTask,
   type UpdateTask,
   type CreateFile,
+  type CreateNote,
+  type UpdateNote,
 } from 'wasp/server/operations';
 import Stripe from 'stripe';
 import type { GeneratedSchedule, StripePaymentResult } from '../shared/types';
@@ -23,6 +25,31 @@ function setupOpenAI() {
     return new HttpError(500, 'OpenAI API key is not set');
   }
   return new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+}
+
+type UpdateNotePayload = Pick<Note, 'id' | 'isImportant'>
+
+export const updateNote: UpdateNote<UpdateNotePayload, Note> = async (
+  { id, isImportant },
+  context
+) => {
+  return context.entities.Note.update({
+    where: { id },
+    data: {
+      isImportant: isImportant,
+    },
+  })
+}
+
+type CreateNotePayload = Pick<Note, 'content'>
+
+export const createNote: CreateNote<CreateNotePayload, Note> = async (
+  args,
+  context
+) => {
+  return context.entities.Note.create({
+    data: { content: args.content },
+  })
 }
 
 export const stripePayment: StripePayment<string, StripePaymentResult> = async (tier, context) => {

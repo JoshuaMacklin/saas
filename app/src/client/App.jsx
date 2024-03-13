@@ -6,10 +6,11 @@
 // import './Main.css';
 import { useState, useEffect } from 'react'
 // import { Note } from 'wasp/entities'
-import { getNotes, useQuery } from 'wasp/client/operations'
+import { getNotes, useQuery, createNote, updateNote } from 'wasp/client/operations'
 
 // import { noteServices } from './services/noteServices'
 import './components/css/App.css'
+import { BiTask } from 'react-icons/bi'
 
 
 
@@ -18,6 +19,8 @@ const App = () => {
 
   return (
     <div>
+      <NewNoteForm />
+
       {notes && <NotesList notes={notes} />}
 
       {isLoading && 'Loading...'}
@@ -27,10 +30,23 @@ const App = () => {
 }
 
 const NoteView = ({ note }) => {
+  const handleIsImportant = async (event) => {
+    try {
+      await updateNote({
+        id: note.id,
+        isImportant: !note.isImportant
+      })
+    } catch(error){
+      window.alert('Error while updating note:' + error.message)
+    }
+  }
+
+  const isNoteImportant = note.isImportant ? "Mark as Not Important" : "Mark as Important"
   return (
     <ul>
       <li id={String(note.id)}>
-      {note.content}
+        {note.content}
+        <button onClick={handleIsImportant}>{isNoteImportant}</button>
       </li>
     </ul>
   )
@@ -46,7 +62,28 @@ const NotesList = ({ notes }) => {
       ))}
     </div>
   )
+}
+
+const NewNoteForm = () => {
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+    try {
+      const target = event.target
+      const content = target.content.value
+      target.reset()
+      await createNote({ content })
+    } catch (err) {
+      window.alert('Error: ' + err.message)
+    }
   }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <input name="content" type="text" defaultValue="" />
+      <input type="submit" value="Create note" />
+    </form>
+  )
+}
 
 
 export default App

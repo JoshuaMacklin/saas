@@ -306,6 +306,16 @@ page AdminUIButtonsPage {
 
 // 📝 Actions
 
+action createNote {
+  fn: import { createNote } from "@src/server/actions.js",
+  entities: [Note]
+}
+
+action updateNote {
+  fn: import { updateNote } from "@src/server/actions.js",
+  entities: [Note]
+}
+
 action generateGptResponse {
   fn: import { generateGptResponse } from "@src/server/actions.js",
   entities: [User, Task, GptResponse]
