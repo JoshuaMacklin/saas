@@ -14,7 +14,7 @@ import { BiTask } from 'react-icons/bi'
 
 
 
-const App = () => {
+const App = (_children) => {
   const { data: notes, isLoading, error } = useQuery(getNotes)
 
   return (
