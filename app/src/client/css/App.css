@@ -1,0 +1,106 @@
+body {
+    /* color: rgb(11, 11, 11); */
+    background-image: url("https://img.goodfon.com/original/1920x1080/8/97/anime-oblaka-nebo-noch.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+}
+
+.formContainer {
+   display: flex;
+   justify-content: center;
+   width: 45%;
+}
+
+/* Ascend Notes title */
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container h1, .container h3, .noNotes {
+    font-family: 'Akaya Kanadaka';
+    color: white;
+}
+
+.container h1 {
+    font-size: 5em;
+}
+
+.noteOptions {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100px;
+}
+
+.noteOptions svg {
+    font-size: 40px;
+}
+
+.note {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: rgb(49, 111, 158);
+    border: solid 1px rgb(174, 205, 223);
+    border-radius: 15px;
+    padding: 5px;
+    height: 150px;
+    max-width: 25%;
+    margin: 5px 0;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.formContainer input {
+    border-radius: 15px;
+    width: 70%;
+    height: 25px;
+    padding: 1.5%;
+    margin: 0 5px
+}
+
+.showBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px 0;
+}
+
+.buttons {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: flex-end;
+}
+
+.buttons, .container {
+    margin: 5px
+}
+
+.notesList{
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: 0;
+    flex-wrap: wrap;
+
+}
+
+.noteView {
+    width: 100%
+}
+
+.buttons button, .showBtn button, .formContainer button {
+    border-radius:  15px;
+    background-color: rgb(92, 164, 237);
+}

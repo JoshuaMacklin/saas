@@ -1,16 +1,7 @@
-// import { useAuth } from 'wasp/client/auth';
-// import { updateCurrentUser } from 'wasp/client/operations';
-// import AppNavBar from './components/AppNavBar';
-// import { useMemo, useEffect, ReactNode } from 'react';
-// import { useLocation } from 'react-router-dom';
-// import './Main.css';
-import { useState, useEffect } from 'react'
-// import { Note } from 'wasp/entities'
-import { getNotes, useQuery, createNote, updateNote, deleteNote } from 'wasp/client/operations'
-
-// import { noteServices } from './services/noteServices'
-import './components/css/App.css'
-import { BiTask } from 'react-icons/bi'
+import './css/App.css';
+import { getNotes, useQuery } from 'wasp/client/operations'
+import NotesList from './components/NotesList'
+import NewNoteForm from './components/NewNoteForm';
 
 
 
@@ -18,8 +9,9 @@ const App = (_children) => {
   const { data: notes, isLoading, error } = useQuery(getNotes)
 
   return (
-    <div>
+    <div className="container">
       <h1> Ascending Notes </h1>
+      <h3>Type and add notes here!</h3>
       <NewNoteForm />
 
       {notes && <NotesList notes={notes} />}
@@ -27,88 +19,6 @@ const App = (_children) => {
       {isLoading && 'Loading...'}
       {error && 'Error: ' + error}
     </div>
-  )
-}
-
-const NoteView = ({ note }) => {
-  const handleIsImportant = async (event) => {
-    try {
-      await updateNote({
-        id: note.id,
-        isImportant: !note.isImportant
-      })
-    } catch (error) {
-      window.alert('Error while updating note:' + error.message)
-    }
-  }
-
-  const handleDelete = async (event) => {
-    try {
-      await deleteNote({
-        id: note.id,
-      })
-    } catch (error) {
-      window.alert('Error while deleting note:' + error.message)
-    }
-  }
-
-  const isNoteImportant = note.isImportant ? "Mark as Not Important" : "Mark as Important"
-  return (
-    <ul>
-      <li id={String(note.id)}>
-        {note.content}
-        <div>
-          <button className="impbtn" onClick={handleIsImportant}>{isNoteImportant}</button>
-        </div>
-        <div>
-          <button className="delbtn" onClick={handleDelete}>Delete Note</button>
-        </div>
-      </li>
-    </ul>
-  )
-}
-
-const NotesList = ({ notes }) => {
-  const [showAll, setShowAll] = useState(true)
-
-  const notesToShow = showAll
-    ? notes
-    : notes.filter(note => note.isImportant)
-
-  console.log(notesToShow)
-
-  if (!notes?.length) return <div>No notes</div>
-
-  return (
-    <div>
-      <div>
-        <button id="shwbtn" onClick={() => setShowAll(!showAll)}> show {showAll ? 'important' : 'all'}</button>
-      </div>
-      {notesToShow.map((note, idx) => (
-        <NoteView note={note} key={idx} />
-      ))}
-    </div>
-  )
-}
-
-const NewNoteForm = () => {
-  const handleSubmit = async (event) => {
-    event.preventDefault()
-    try {
-      const target = event.target
-      const content = target.content.value
-      target.reset()
-      await createNote({ content })
-    } catch (err) {
-      window.alert('Error: ' + err.message)
-    }
-  }
-
-  return (
-    <form onSubmit={handleSubmit}>
-      <input id="content" name="content" type="text" defaultValue="" />
-      <input id="submit-note" type="submit" value="Create Note" />
-    </form>
   )
 }
 
