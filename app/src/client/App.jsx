@@ -11,6 +11,7 @@ const App = (_children) => {
   return (
     <div className="container">
       <h1> Ascending Notes </h1>
+      <h3>Type and add notes here!</h3>
       <NewNoteForm />
 
       {notes && <NotesList notes={notes} />}

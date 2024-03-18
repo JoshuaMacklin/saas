@@ -9,7 +9,8 @@ body {
 
 .formContainer {
    display: flex;
-   justify-content: space-between;
+   justify-content: center;
+   width: 45%;
 }
 
 /* Ascend Notes title */
@@ -20,10 +21,13 @@ body {
     align-items: center;
 }
 
-.container h1 {
+.container h1, .container h3 {
     font-family: 'Akaya Kanadaka';
-    font-size: 5em;
     color: white;
+}
+
+.container h1 {
+    font-size: 5em;
 }
 
 .noteOptions {
@@ -41,7 +45,8 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    background-color: rgb(122, 145, 153);
+    background-color: rgb(49, 111, 158);
+    border: solid 1px rgb(174, 205, 223);
     border-radius: 15px;
     padding: 5px;
     height: 150px;
@@ -54,6 +59,14 @@ body {
     display: flex;
     justify-content: center;
     
+}
+
+.formContainer input {
+    border-radius: 15px;
+    width: 70%;
+    height: 25px;
+    padding: 1.5%;
+    margin: 0 5px
 }
 
 .showBtn{
@@ -87,7 +100,7 @@ body {
     width: 100%
 }
 
-.buttons button, .showBtn button {
+.buttons button, .showBtn button, .formContainer button {
     border-radius:  15px;
     background-color: rgb(92, 164, 237);
 }
