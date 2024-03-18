@@ -12,7 +12,7 @@ const NotesList = ({ notes }) => {
 
     console.log(notesToShow)
 
-    if (!notes?.length) return <div>No notes</div>
+    if (!notes?.length) return <h3 className="noNotes">No notes</h3>
 
     return (
         <div className="noteView">

@@ -21,7 +21,7 @@ body {
     align-items: center;
 }
 
-.container h1, .container h3 {
+.container h1, .container h3, .noNotes {
     font-family: 'Akaya Kanadaka';
     color: white;
 }
