@@ -3,12 +3,105 @@
 Hosted Site: [Ascending Notes V.2](https://ascend-notes-saas-app-client.fly.dev/)
 
 
-## Welcome to your new SaaS App! 🎉
-<a href="https://www.producthunt.com/posts/open-saas?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-open&#0045;saas" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=436467&theme=light" alt="Open&#0032;SaaS - Open&#0045;source&#0032;&#0038;&#0032;100&#0037;&#0032;free&#0032;React&#0032;&#0038;&#0032;Node&#0046;js&#0032;SaaS&#0032;starter&#0033; | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+## Getting Started ! 🎉
+
+### Step 1: Setting up Wasp:
+
+#### For Mac/Linux:
+
+Install Wasp by running this command in your terminal:
+
+```
+
+curl -sSL https://get.wasp-lang.dev/installer.sh | sh
+
+```
+
+#### For Windows:
+
+For Windows, install wasp requires a bit more work.
+
+First, you need to install a Windoes Subsystem for Linux(or WSL)
+
+A WSL allows developers on Windows systems to run a fully functional and native GNU/Linux environment. 
+
+Check out this [Wasp WSL Documentation](https://wasp-lang.dev/blog/2023/11/21/guide-windows-development-wasp-wsl) for step-by-step information on how to install WSL on your Windows environment.
+
+If you run into any issues, reach out in the [Wasp Discord](https://discord.gg/aCamt5wCpS) for help!
+
+
+
+### Step 2: Fork and Clone Repo
+
+![Fork Repo](image.png)
+
+![Clone Repo](image-1.png)
+
+In your terminal, cd into a folder of your choice and run command 
+
+```
+
+git clone https://github.com/<github-username>/<github-repo-name>.git
+
+```
+### Step 3: Installing Dependencies 
+
+Open the cloned repo folder in your preferred IDE editor (We used [Visual Studio Code] (https://code.visualstudio.com/)!)
+
+Open the terminal in your IDE editor and run these commands:
+
+This command will take you to the app folder:
+
+
+```
+
+cd app
+
+```
+
+This command will install all the required dependencies for the application: 
+
+```
+
+npm install
+
+```
+
+You have now install all the dependencies! Gratz 🎉
+
+### Step 4: Getting the App Running
+
+#### Setting Up Database
+
+In order to access the database you need to install Docker! 
+
+If you don't have Docker, you can install it [here](https://www.docker.com/products/docker-desktop/)
+
+
+After installing Docker, pleae follow the OpenSaas documentation on how to set up the database [here](https://docs.opensaas.sh/start/getting-started/#start-your-db)
+
+
+#### Starting App
+
+Please follow the OpenSaas documentation for [starting the app](https://docs.opensaas.sh/start/getting-started/#start-your-db)
+
+
+
+## Understaning the Note App
+
+
+
+
+
+
+
+
+
+## OpenSaaS Template Info
+
 
 https://github.com/wasp-lang/open-saas/assets/70215737/5ff289b1-12b9-4b46-aa90-a6a3122de93e
 
-You've decided to build a SaaS app with the Open SaaS template. Great choice! 
 
 This template is:
 
